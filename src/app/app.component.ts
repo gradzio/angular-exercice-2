@@ -19,25 +19,39 @@ import { loadUsers } from './store/user/user.actions';
   imports: [NgFor, AsyncPipe],
   template: `
     <h1>Activity Board</h1>
-    <div class="section" *ngFor="let activity of activities$ | async">
-      <h2>Activity Name: {{ activity.name }}</h2>
-      <span>All Teachers available for : {{ activity.type }} are</span>
-      <ul>
-        <li
-          *ngFor="
-            let teacher of getAllTeachersForActivityType$(activity.type) | async
-          "
-        >
-          {{ teacher.name }}
-        </li>
-      </ul>
-    </div>
+    <section>
+      <div class="card" *ngFor="let activity of activities$ | async">
+        <h2>Activity Name: {{ activity.name }}</h2>
+        <p>Main teacher: {{ activity.teacher.name }}</p>
+        <span>All teachers available for : {{ activity.type }} are</span>
+        <ul>
+          <li
+            *ngFor="
+              let teacher of getAllTeachersForActivityType$(activity.type)
+                | async
+            "
+          >
+            {{ teacher.name }}
+          </li>
+        </ul>
+      </div>
+    </section>
   `,
   styles: [
     `
-      .section {
+      section {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2px;
+      }
+
+      .card {
         display: flex;
         flex-direction: column;
+        border: solid;
+        border-width: 1px;
+        border-color: black;
+        padding: 2px;
       }
     `,
   ],

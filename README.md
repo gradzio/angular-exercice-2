@@ -1,27 +1,37 @@
-# AngularExercice2Ngrx
+# Angular Exercice 2 : NgRx
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+Second exercice of a series of Angular exercices. The goal is to improve our angular skills all together.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+For this second exercice, we will deep dive inside **NgRx**.
 
-## Code scaffolding
+For this exercice, you will have a dashboard of activities displaying the name, the main teacher and a list of subtitutes.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Information
 
-## Build
+In NgRx, **selectors** is a very powerful tool often **misused**. You should use them as soon as you need to transform an already existing data in the store.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- You shouldn't store **derived state**. This is error prone because when your data change, you will have to change it at multiple places => you should have only one place of truth with that data, and every transformation should be done in a **selector**.
 
-## Running unit tests
+- Inside a component, you shouldn't transform a selector (using map operator), or you shouldn't have to call a selector from a fonction in your view. The useful data for a component should be done in a **selector**.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Statement
 
-## Running end-to-end tests
+##### You will have to
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1.  Refactor this working exemple of a dashboard of activities.
 
-## Further help
+##### Rules:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Only **one action** should be dispatched from a component
+- Status effect is useless. Using **combineLatest** should be a red flag. And Effect are made for side effect, not transforming data. That's a selector role
+- Status state might not be useful, it's only a **derived state** of existing state.
+
+## Submitting your work
+
+1. Fork the project
+2. Work On it
+3. Submit a PR that I will review
+
+_You can ask any question on Twitter or on Github_

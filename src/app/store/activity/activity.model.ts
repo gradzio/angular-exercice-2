@@ -47,4 +47,9 @@ export const activities: Activity[] = [
   randActivity(),
   randActivity(),
   randActivity(),
+  randActivity(),
+  randActivity(),
+  randActivity(),
+  randActivity(),
+  randActivity(),
 ];
